@@ -10,9 +10,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do
+      result = Users::CreateFirstAdminIfNeeded.call(user: resource, params: params[:user])
+      flash.now[:message] = t(result.message) unless result.success?
+    end
+  end
 
   # GET /resource/edit
   # def edit

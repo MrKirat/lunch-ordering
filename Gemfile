@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'figaro'
 # Authentication
 gem 'devise'
+# To keep our controllers clear
+gem "interactor", "~> 3.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
