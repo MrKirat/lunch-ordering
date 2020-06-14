@@ -21,6 +21,10 @@ gem 'devise'
 gem "interactor", "~> 3.0"
 # Let's use HAML template engine instead of plain HTML
 gem "haml-rails", "~> 2.0"
+# Let's add some simple styles
+gem 'bootstrap', '~> 4.5.0'
+# Bootstrap depends on this gem
+gem 'jquery-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
