@@ -19,6 +19,8 @@ gem 'figaro'
 gem 'devise'
 # To keep our controllers clear
 gem "interactor", "~> 3.0"
+# Let's use HAML template engine instead of plain HTML
+gem "haml-rails", "~> 2.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
