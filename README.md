@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To run this project follow these steps:
+1. Add `config/application.yml` file. Use `/config/application.example.yml` file as an example.
+2. Run `rails db:setup`
+3. Run `rails s`
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app should be started on `localhost:3000`.
