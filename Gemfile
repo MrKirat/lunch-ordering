@@ -25,6 +25,8 @@ gem "haml-rails", "~> 2.0"
 gem 'bootstrap', '~> 4.5.0'
 # Bootstrap depends on this gem
 gem 'jquery-rails'
+# To work with forms
+gem 'simple_form'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
