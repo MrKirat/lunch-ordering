@@ -27,6 +27,8 @@ gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 # To work with forms
 gem 'simple_form'
+# To work with money
+gem 'money-rails', '~>1.12'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
