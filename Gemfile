@@ -29,6 +29,8 @@ gem 'jquery-rails'
 gem 'simple_form'
 # To work with money
 gem 'money-rails', '~>1.12'
+# To add some icons
+gem 'font-awesome-sass', '~> 5.13.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
