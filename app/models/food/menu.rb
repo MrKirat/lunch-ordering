@@ -20,7 +20,7 @@ class Food::Menu < ApplicationRecord
     self.class.today.first == self
   end
 
-  def self.per_last(time_frame)
+  def self.per_current(time_frame)
     where(created_at: Time.zone.now.send("all_#{time_frame}"))
       .order(created_at: :desc)
       .group_by { |menu| menu.created_at.strftime("%Y-%m-%d") }

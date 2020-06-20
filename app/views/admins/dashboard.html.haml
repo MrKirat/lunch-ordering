@@ -1,5 +1,5 @@
 %h1 Admin dashboard
 = month_calendar do |date|
-  = date
-  = link_to 'Menu'
-  = link_to 'Orders'
+  .badge.badge-pill.badge-light= date
+  - if (menu = @menus[date.to_s])
+    = link_to 'Menu', menu, class: 'btn btn-info'

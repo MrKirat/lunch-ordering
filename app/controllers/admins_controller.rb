@@ -3,5 +3,6 @@ class AdminsController < ApplicationController
   layout 'admin'
 
   def dashboard
+    @menus = Food::Menu.per_current(:week)
   end
 end
