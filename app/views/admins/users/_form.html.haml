@@ -1,0 +1,10 @@
+-# frozen_string_literal: true
+= simple_form_for(@user, url: admins_user_path(@user), html: {class: "devise-form ml-auto mr-auto"}) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+    = f.input :email, input_html: { autocomplete: 'email', autofocus: true }
+    = f.input :password, minlength: @minimum_password_length, input_html: { autocomplete: 'new-password' }
+    = f.input :password_confirmation, autocomplete: "new-password"
+  .form-actions
+    = f.button :submit, "Create", class: "btn-primary text-center"

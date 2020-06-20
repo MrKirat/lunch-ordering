@@ -1,2 +1,5 @@
-%h1 Admins#dashboard
-%p Find me in app/views/admins/dashboard.html.erb
+%h1 Admin dashboard
+= month_calendar do |date|
+  = date
+  = link_to 'Menu'
+  = link_to 'Orders'

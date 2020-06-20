@@ -11,6 +11,8 @@
         - if admin_signed_in?
           %li.nav-item
             %a.nav-link{:href => "/admins/dashboard"} Dashboard
+          %li.nav-item
+            %a.nav-link{:href => "/admins/users"} Users
       .inline.my-2.my-lg-0
         - if admin_signed_in?
           -# = link_to 'My Profile', edit_admin_registration_path, :class => "btn btn-outline-light mr-sm-2"

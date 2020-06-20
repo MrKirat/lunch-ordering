@@ -224,6 +224,8 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     sexp_processor (4.15.0)
+    simple_calendar (2.4.0)
+      rails (>= 3.0)
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -293,6 +295,7 @@ DEPENDENCIES
   rails (~> 5.2.4, >= 5.2.4.3)
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_calendar (~> 2.0)
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

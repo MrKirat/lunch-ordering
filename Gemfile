@@ -31,6 +31,8 @@ gem 'simple_form'
 gem 'money-rails', '~>1.12'
 # To add some icons
 gem 'font-awesome-sass', '~> 5.13.0'
+# To simplify work with calendar
+gem "simple_calendar", "~> 2.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
