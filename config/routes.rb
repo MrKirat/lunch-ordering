@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
 
   devise_for :users, path: '/', controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    registrations: 'registrations',
+    sessions: 'sessions'
   }
   get 'menus/:id', to: 'food/menus#show', as: :food_menu
   get :dashboard, to: 'users#dashboard'
