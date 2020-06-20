@@ -51,16 +51,6 @@ class Admins::FoodMenusController < ApplicationController
     end
   end
 
-  # DELETE /admins/food_menus/1
-  def destroy
-    return redirect_to admins_food_menus_path, notice: 'You can\'t destroy old menus.' unless @menu.current?
-
-    @menu.destroy
-    respond_to do |format|
-      format.html { redirect_to admins_food_menus_url, notice: 'Menu was successfully destroyed.' }
-    end
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

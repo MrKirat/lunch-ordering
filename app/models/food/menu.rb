@@ -5,7 +5,7 @@ class Food::Menu < ApplicationRecord
   has_many :categories, foreign_key: :food_menu_id
   has_many :items, through: :categories
 
-  accepts_nested_attributes_for :categories, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :categories, reject_if: proc { |attributes| attributes['name'].blank? }
 
   validate :must_be_only_one_per_day, on: :create
   validate :must_be_current, on: :update

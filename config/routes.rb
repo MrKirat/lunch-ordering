@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
   namespace :admins do
     resources :users
-    resources :food_menus
+    resources :food_menus, except: :destroy
     get :dashboard
   end
 
