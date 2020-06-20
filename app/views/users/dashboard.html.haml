@@ -1,0 +1,5 @@
+%h1 User dashboard
+= week_calendar do |date|
+  = date
+  - if (menu = @menus[date.to_s])
+    = link_to 'Menu', menu

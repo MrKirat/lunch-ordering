@@ -20,6 +20,13 @@ class Food::Menu < ApplicationRecord
     self.class.today.first == self
   end
 
+  def self.per_last(time_frame)
+    where(created_at: Time.zone.now.send("all_#{time_frame}"))
+      .order(created_at: :desc)
+      .group_by { |menu| menu.created_at.strftime("%Y-%m-%d") }
+      .map { |date, menus| [date, menus.first] }.to_h
+  end
+
   protected
 
   def must_be_only_one_per_day

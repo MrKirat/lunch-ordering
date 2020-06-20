@@ -5,13 +5,15 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users
     resources :food_menus
+    get :dashboard
   end
 
-  get 'admins/dashboard'
 
   devise_for :users, path: '/', controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  get 'menus/:id', to: 'food/menus#show', as: :food_menu
+  get :dashboard, to: 'users#dashboard'
   root 'home#index'
 end

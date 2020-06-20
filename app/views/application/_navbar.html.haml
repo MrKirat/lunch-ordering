@@ -8,11 +8,11 @@
     #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
         %li.nav-item
-          %a.nav-link{:href => "#"}
+          %a.nav-link{:href => "/"}
             Home
         - if user_signed_in?
           %li.nav-item
-            %a.nav-link{:href => "#"} Order
+            %a.nav-link{:href => "dashboard"} Dashboard
       .inline.my-2.my-lg-0
         - if user_signed_in?
           = link_to 'My Profile', edit_user_registration_path, :class => "btn btn-outline-light mr-sm-2"
