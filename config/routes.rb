@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'users/index'
-    get 'users/show'
-  end
   devise_for :admins, path: 'admins', controllers: {
     sessions: 'admins/sessions'
   }
   namespace :admins do
     resources :users
+    resources :food_menus
   end
 
   get 'admins/dashboard'
