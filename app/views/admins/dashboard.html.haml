@@ -1,5 +1,17 @@
-%h1 Admin dashboard
-= month_calendar do |date|
-  .badge.badge-pill.badge-light= date
-  - if (menu = @menus[date.to_s])
-    = link_to 'Menu', menu, class: 'btn btn-info'
+%h1.mt-3 Admin dashboard
+
+%h3.mt-4 Calendar
+.dashboard-calendar
+  = week_calendar do |date|
+    .badge.badge-pill.badge-light= date.day
+    - if (menu = @per_week_menus[date.to_s])
+      = link_to 'Menu', admins_food_menu_path(menu), class: 'btn btn-info'
+
+%h3.mt-4 Last menus
+= render 'admins/food_menus/collection', locals: { menus: @last_created_menus }
+
+%h3.mt-4 Last orders
+= render 'admins/orders/collection', locals: { orders: @orders }
+
+%h3.mt-4 Last registered users
+= render 'admins/users/collection', locals: { users: @users }

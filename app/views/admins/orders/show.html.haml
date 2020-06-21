@@ -1,0 +1,21 @@
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Price
+
+  %tbody
+    - @order.food_items.each do |item|
+      %tr
+        %th= item.name
+        %th= item.price.format
+
+%p
+  %b Total price:
+  %span= @order.total_cost.format
+
+%p
+  %b Customer
+  %span= link_to @order.customer.email, admins_user_path(@order.customer)
+
+= link_to 'Back', admins_orders_path

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users
     resources :food_menus, except: :destroy
+    resources :orders, only: [:index, :show]
     get :dashboard
   end
 
