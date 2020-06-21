@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
   namespace :admins do
+    get '/calendars/month', to: 'calendars#month'
+    get '/calendars/day', to: 'calendars#day'
     resources :users
     resources :food_menus, except: :destroy
     resources :orders, only: [:index, :show]

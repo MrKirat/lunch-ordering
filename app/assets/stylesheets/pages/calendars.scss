@@ -1,0 +1,16 @@
+.calendars-month {
+  &__cell {
+    display: block;
+    height: 100%;
+    color: black;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  //override
+  .day:hover {
+    background-color: #00BCD4;
+  }
+}

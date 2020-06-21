@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  include DataSearchable
+
   belongs_to :customer, class_name: 'User', foreign_key: :user_id
 
   has_many :order_items

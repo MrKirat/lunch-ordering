@@ -1,4 +1,5 @@
 class Food::Menu < ApplicationRecord
+  include DataSearchable
 
   MAX_MENU_COUNT_PER_DAY = 1
 
@@ -18,13 +19,6 @@ class Food::Menu < ApplicationRecord
 
   def current?
     self.class.today.first == self
-  end
-
-  def self.per_current(time_frame)
-    where(created_at: Time.zone.now.send("all_#{time_frame}"))
-      .order(created_at: :desc)
-      .group_by { |menu| menu.created_at.strftime("%Y-%m-%d") }
-      .map { |date, menus| [date, menus.first] }.to_h
   end
 
   protected

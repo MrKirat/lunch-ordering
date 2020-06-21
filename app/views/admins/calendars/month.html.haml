@@ -1,0 +1,16 @@
+%h1 Monthly calendars
+
+.calendars-month
+  = month_calendar do |date|
+    - link_to admins_calendars_day_path(:start_date => date.to_s), class: 'calendars-month__cell' do
+      .badge.badge-pill.badge-light= date.day
+
+      - if (menus_count = @menus.where(created_at: date.all_day).count) > 0
+        %br
+        %b Menus:
+        = menus_count
+
+      - if (orders_count = @orders.where(created_at: date.all_day).count) > 0
+        %br
+        %b Orders:
+        = orders_count
