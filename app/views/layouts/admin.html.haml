@@ -4,6 +4,5 @@
   %body
     = render'admins/shared/navbar'
     .container
-      %p.notice= notice
-      %p.alert= alert
+      = render 'flash'
       = yield

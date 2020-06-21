@@ -2,8 +2,7 @@
 %html
   = render 'head'
   %body
-    = render'navbar'
+    = render 'navbar'
     .container
-      %p.notice= notice
-      %p.alert= alert
+      = render 'flash'
       = yield
