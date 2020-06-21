@@ -1,0 +1,22 @@
+-# frozen_string_literal: true
+= simple_form_for(@order) do |f|
+  = f.error_notification
+  - @menu.categories.each_with_index do |category, index|
+    %span= category.name
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Name
+          %th Price
+      %tbody
+        - category.items.each do |item|
+          %tr
+            %td
+              %input{ type: :radio, id: item.name, value: item.id, name: "order[food_item_ids][#{index}]" }
+            %td
+              %label{ for: item.name }= item.name
+            %td
+              %span= item.price.format
+
+  = f.button :submit, 'Submit' , class: "btn-primary text-center"

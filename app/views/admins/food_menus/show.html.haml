@@ -14,7 +14,7 @@
       - category.items.each do |item|
         %tr
           %th= item.name
-          %th= item.price
+          %th= item.price.format
 
 = link_to 'Edit', edit_admins_food_menu_path(@menu)
 \|

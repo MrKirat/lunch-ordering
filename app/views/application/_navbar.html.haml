@@ -12,7 +12,9 @@
             Home
         - if user_signed_in?
           %li.nav-item
-            %a.nav-link{:href => "dashboard"} Dashboard
+            %a.nav-link{:href => "/dashboard"} Dashboard
+          %li.nav-item
+            %a.nav-link{:href => "/orders"} Orders
       .inline.my-2.my-lg-0
         - if user_signed_in?
           = link_to 'My Profile', edit_user_registration_path, :class => "btn btn-outline-light mr-sm-2"

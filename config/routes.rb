@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     sessions: 'sessions'
   }
   get 'menus/:id', to: 'food/menus#show', as: :food_menu
+  resources :orders, except: [:destroy, :edit, :update]
   get :dashboard, to: 'users#dashboard'
   root 'home#index'
 end

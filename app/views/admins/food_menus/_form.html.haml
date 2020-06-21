@@ -7,7 +7,7 @@
     = c.input :name, :label => "Category name"
     = c.nested_fields_for :items, wrapper_options: { class: 'border border-dark rounded p-2 mb-2' } do |i|
       = i.input :name, :label => "Item name"
-      = i.input :price, :label => "Item price"
+      = i.input :price, :label => "Item price ($)"
     = c.add_nested_fields_link :items, 'Add item', class: 'btn btn-primary', role: 'button'
   = m.add_nested_fields_link :categories, 'Add category', class: 'btn btn-primary', role: 'button'
   .form-actions
