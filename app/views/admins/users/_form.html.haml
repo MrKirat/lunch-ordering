@@ -3,6 +3,7 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
+    = f.input :name, input_html: { autocomplete: 'name', autofocus: true }
     = f.input :email, input_html: { autocomplete: 'email', autofocus: true }
     = f.input :password, minlength: @minimum_password_length, input_html: { autocomplete: 'new-password' }
     = f.input :password_confirmation, autocomplete: "new-password"
