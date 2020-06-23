@@ -3,12 +3,13 @@
   = f.error_notification
   - @menu.categories.each_with_index do |category, index|
     %span= category.name
-    %table.table
+    %table.table.table-dark
       %thead
         %tr
           %th
           %th Name
           %th Price
+          %th Image
       %tbody
         - category.items.each do |item|
           %tr
@@ -18,5 +19,7 @@
               %label{ for: item.name }= item.name
             %td
               %span= item.price.format
+            %td
+              %span= image_tag item.image, class: 'img-fluid img-thumbnail' if item.image.attached?
 
   = f.button :submit, 'Submit' , class: "btn-primary text-center"

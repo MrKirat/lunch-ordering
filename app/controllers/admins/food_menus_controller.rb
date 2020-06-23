@@ -64,7 +64,7 @@ class Admins::FoodMenusController < ApplicationController
       categories_attributes: [
         :name, :_destroy, :id,
         items_attributes: [
-          :name, :price, :_destroy, :id
+          :name, :price, :_destroy, :id, :image
         ]
       ]
     )

@@ -5,5 +5,7 @@ class Food::Item < ApplicationRecord
   has_many :order_items, :foreign_key => :food_item_id
   has_many :orders, through: :order_items
 
+  has_one_attached :image
+
   monetize :price_cents
 end

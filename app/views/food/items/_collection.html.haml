@@ -1,0 +1,13 @@
+%table.table.table-dark.table-bordered
+  %thead
+    %tr.text-center
+      %th Name
+      %th Price
+      %th Image
+
+  %tbody
+    - locals[:items].each do |item|
+      %tr.text-center
+        %td= item.name
+        %td= item.price.format
+        %td= image_tag item.image, class: 'img-fluid img-thumbnail' if item.image.attached?
