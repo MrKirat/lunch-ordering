@@ -2,7 +2,7 @@
   %b Date:
   = menu_date(@menu)
 
-= render 'food/categories/collection', locals: { categories: @menu.categories }
+= render 'food/categories/collection', categories: @menu.categories
 
 = link_to 'Edit', edit_admins_food_menu_path(@menu)
 \|

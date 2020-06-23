@@ -3,15 +3,15 @@
 %h3.mt-4 Calendar
 .dashboard-calendar
   = week_calendar do |date|
-    .badge.badge-pill.badge-light= date.day
-    - if (menu = @per_week_menus[date.to_s])
-      = link_to 'Menu', admins_food_menu_path(menu), class: 'btn btn-info'
+    = render 'admins/calendars/cell', date: date,
+      menus_count: count_items_per_cell(@menus_per_week, date),
+      orders_count: count_items_per_cell(@orders_per_week, date)
 
 %h3.mt-4 Last menus
-= render 'admins/food_menus/collection', locals: { menus: @last_created_menus }
+= render 'admins/food_menus/collection', menus: @last_menus
 
 %h3.mt-4 Last orders
-= render 'admins/orders/collection', locals: { orders: @orders }
+= render 'admins/orders/collection', orders: @last_orders
 
 %h3.mt-4 Last registered users
-= render 'admins/users/collection', locals: { users: @users }
+= render 'admins/users/collection', users: @last_users

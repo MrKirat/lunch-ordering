@@ -3,9 +3,11 @@ class AdminsController < ApplicationController
   layout 'admin'
 
   def dashboard
-    @per_week_menus = Food::Menu.first_per_day_within(Time.current.to_s, :week)
-    @last_created_menus = Food::Menu.order(created_at: :asc).last(3)
-    @orders = Order.order(created_at: :asc).last(3)
-    @users = User.order(created_at: :asc).last(3)
+    @menus_per_week = Food::Menu.created_within(Time.current.to_s, :week)
+    @orders_per_week = Order.created_within(Time.current.to_s, :week)
+
+    @last_users = User.order(created_at: :desc).limit(3)
+    @last_menus = Food::Menu.order(created_at: :desc).limit(3)
+    @last_orders = Order.order(created_at: :desc).limit(3).includes(:food_items).includes(:customer)
   end
 end

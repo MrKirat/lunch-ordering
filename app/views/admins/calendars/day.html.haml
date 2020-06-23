@@ -6,11 +6,11 @@
 
 %h3 Menus
 
-= render 'admins/food_menus/collection', locals: { menus: @menus }
+= render 'admins/food_menus/collection', menus: @menus
 
 %h3 Orders
 
 %b Total cost per day:
 = @orders.reduce(Money.new(0)) { |sum, order| sum + order.total_cost }
 
-= render 'admins/orders/collection', locals: { orders: @orders }
+= render 'admins/orders/collection', orders: @orders

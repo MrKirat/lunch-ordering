@@ -5,7 +5,7 @@ class Admins::UsersController < ApplicationController
 
   # GET /admins/users
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :desc)
   end
 
   # GET /admins/users/1
@@ -69,6 +69,6 @@ class Admins::UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

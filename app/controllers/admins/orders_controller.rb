@@ -4,7 +4,7 @@ class Admins::OrdersController < ApplicationController
 
   # GET /admins/orders
   def index
-    @orders = Order.all
+    @orders = Order.all.order(created_at: :desc)
   end
 
   # GET /admins/orders/1

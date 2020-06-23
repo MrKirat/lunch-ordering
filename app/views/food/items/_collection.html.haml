@@ -6,7 +6,7 @@
       %th Image
 
   %tbody
-    - locals[:items].each do |item|
+    - items.each do |item|
       %tr.text-center
         %td= item.name
         %td= item.price.format

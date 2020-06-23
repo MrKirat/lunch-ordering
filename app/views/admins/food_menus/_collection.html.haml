@@ -5,7 +5,7 @@
       %th{colspan: 2}
 
   %tbody
-    - locals[:menus].each do |menu|
+    - menus.each do |menu|
       %tr
         %td= menu_date(menu)
         %td= link_to 'Show', admins_food_menu_path(menu)

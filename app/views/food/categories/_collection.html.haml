@@ -1,4 +1,4 @@
-- locals[:categories].each do |category|
+- categories.each do |category|
   %h3= category.name
 
-  = render 'food/items/collection', locals: { items: category.items }
+  = render 'food/items/collection', items: category.items

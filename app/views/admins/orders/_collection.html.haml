@@ -7,7 +7,7 @@
       %th
 
   %tbody
-    - locals[:orders].each do |order|
+    - orders.each do |order|
       %tr
         %td= order.created_at
         %td= order.total_cost
