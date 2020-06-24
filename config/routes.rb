@@ -10,7 +10,14 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
     get :dashboard
   end
-
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      namespace :admin do
+        mount_devise_token_auth_for 'Admin', at: 'auth'
+        resources :orders, only: :index
+      end
+    end
+  end
 
   devise_for :users, path: '/', controllers: {
     registrations: 'registrations',

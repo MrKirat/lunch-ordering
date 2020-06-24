@@ -35,6 +35,10 @@ gem 'font-awesome-sass', '~> 5.13.0'
 gem "simple_calendar", "~> 2.0"
 # To work with dynamic nested forms
 gem 'nested_form_fields'
+# For API authentication
+gem 'devise_token_auth'
+# To configure CORS
+gem 'rack-cors'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
