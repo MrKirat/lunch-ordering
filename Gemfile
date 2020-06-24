@@ -39,6 +39,10 @@ gem 'nested_form_fields'
 gem 'devise_token_auth'
 # To configure CORS
 gem 'rack-cors'
+# To serialize data
+gem 'blueprinter'
+# Fast JSON parser
+gem 'oj'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -46,8 +50,6 @@ gem 'rack-cors'
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

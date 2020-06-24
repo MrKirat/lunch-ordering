@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       namespace :admin do
-        mount_devise_token_auth_for 'Admin', at: 'auth'
+        mount_devise_token_auth_for 'Admin', at: 'auth', :skip => ['password']
         resources :orders, only: :index
       end
     end
