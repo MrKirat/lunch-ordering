@@ -1,0 +1,14 @@
+language: ruby
+cache:
+- bundler
+before_script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  api_key:
+    secure: H3wvwPgKNXQf9lvLpt5DURzAkjc0OGfVXmcKPiDZ1Nag3iJmrvXedxAJp3o0WJoK79shVQxRlIuXkWMQvfMaLOZdJWoJLbm5UEKNtAbVJW+FWfiR652tnp69SQG11CFYjAHF/Zu5OinFMjc8BhTX67bymfID+kAUv6Tgo0j5DZxnD7WFSZD9yk5gF/imW2LO1XktzYeFxKaBTKwIQiZ723XRFs/a/e1dbIZ8Q9xDNU0h9+73nrgp04rMZwWnhuBzBTlTZZ8rs2SnYhjS4NNdmD4GfximTWICGSB0BBu+CA1dPrPG0s7/icxjRrTCbShmQ8kZHiMNDuIQPGp0WEeCOKqflNsBlZg89nET+CqnLBvGps6hlUxOlQJkUMlGOmRM3kF4imHdm63HpciebZ7cxtDd3gAYOL45hwgJyj7xYBmXfi3S7FwczSzxo3cwi7FiS37L43bmx9xv0kH7lLSAk4JF3TjRAZWxtmQWNnaNdmIGbMESWnVp6Y4S3NdwpdoQZp2q92jzSTlx8AetiLHJ+2fXFXCgTboUk3Xi1rzc4uiVtUzYoE9xNEl/kXNPaCQMi63A/zrpwN/JNOYj327IlQpqPf06a6LBvE6kDQMbpZoxHUgBOld7J6Z5lHh+6X5RvG2D09PH5aDd0hBFBApbIDBNf0pBo+e0BZAjZ+5IRhE=
+  app: kirat-lunch-ordering
+  on:
+    repo: mrkirat/lunch_ordering
