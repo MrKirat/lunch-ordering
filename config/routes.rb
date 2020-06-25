@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get '/calendars/month', to: 'calendars#month'
     get '/calendars/day', to: 'calendars#day'
     resources :users
-    resources :food_menus, except: :destroy
+    namespace :food do
+      resources :menus, except: :destroy
+    end
     resources :orders, only: [:index, :show]
     get :dashboard
   end

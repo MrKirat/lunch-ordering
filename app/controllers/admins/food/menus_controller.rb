@@ -1,31 +1,31 @@
-class Admins::FoodMenusController < ApplicationController
+class Admins::Food::MenusController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
   layout 'admin'
 
-  # GET /admins/food_menus
+  # GET /admins/food/menus
   def index
     @menus = Food::Menu.all.order(created_at: :desc)
   end
 
-  # GET /admins/food_menus/1
+  # GET /admins/food/menus/1
   def show
   end
 
-  # GET /admins/food_menus/new
+  # GET /admins/food/menus/new
   def new
-    return redirect_to admins_food_menus_path, notice: 'You create only one menu per day.' if Food::Menu.current.present?
+    return redirect_to admins_food/menus_path, notice: 'You create only one menu per day.' if Food::Menu.current.present?
     @menu = Food::Menu.new
   end
 
-  # GET /admins/food_menus/1/edit
+  # GET /admins/food/menus/1/edit
   def edit
-    return redirect_to admins_food_menus_path, notice: 'You can edit only today menu.' unless @menu.current?
+    return redirect_to admins_food/menus_path, notice: 'You can edit only today menu.' unless @menu.current?
   end
 
-  # POST /admins/food_menus
+  # POST /admins/food/menus
   def create
-    return redirect_to admins_food_menus_path, notice: 'You create only one menu per day.' if Food::Menu.current.present?
+    return redirect_to admins_food/menus_path, notice: 'You create only one menu per day.' if Food::Menu.current.present?
 
     @menu = Food::Menu.new(menu_params)
 
@@ -38,9 +38,9 @@ class Admins::FoodMenusController < ApplicationController
     end
   end
 
-  # PATCH/PUT /admins/food_menus/1
+  # PATCH/PUT /admins/food/menus/1
   def update
-    return redirect_to admins_food_menus_path, notice: 'You can edit only today menu.' unless @menu.current?
+    return redirect_to admins_food/menus_path, notice: 'You can edit only today menu.' unless @menu.current?
 
     respond_to do |format|
       if @menu.update(menu_params)
