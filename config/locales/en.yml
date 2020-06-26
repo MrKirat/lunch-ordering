@@ -30,4 +30,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  interactors:
+    first_admin_success: "There was created admin profile with the same credentials for you as for first registered user!"

@@ -10,7 +10,8 @@ class Users::CreateFirstAdminIfNeeded
       email: context.params[:email]
     )
 
-    context.fail!(message: context.admin.errors.messages) if context.admin.errors.any?
+    context.fail!(error: context.admin.errors) if context.admin.errors.any?
+    context.admin_success_message = I18n.t('interactors.first_admin_success') unless context.admin.errors.any?
   end
 
   def rollback

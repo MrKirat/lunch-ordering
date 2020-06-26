@@ -13,7 +13,8 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super do
       result = Users::CreateFirstAdminIfNeeded.call(user: resource, params: params[:user])
-      flash.now[:message] = t(result.message) unless result.success?
+      flash.now[:error] = result.errors.full_messages.join(' ') unless result.success?
+      flash[:success] = result.admin_success_message if result.admin_success_message
     end
   end
 

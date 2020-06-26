@@ -1,6 +1,5 @@
 -# frozen_string_literal: true
 = simple_form_for(@order) do |f|
-  = f.error_notification
   - @menu.categories.each_with_index do |category, index|
     %span= category.name
     %table.table.table-dark

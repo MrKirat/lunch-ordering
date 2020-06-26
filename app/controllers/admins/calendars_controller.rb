@@ -1,7 +1,7 @@
 class Admins::CalendarsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_menus
-  before_action :set_orders
+  before_action :set_menus, only: [:day ,:month]
+  before_action :set_orders, only: [:day ,:month]
   layout 'admin'
 
   # GET /admins/calendars/day
@@ -16,10 +16,15 @@ class Admins::CalendarsController < ApplicationController
   private
 
   def set_menus
-    @menus = Food::Menu.created_within(params[:start_date] || Time.current.to_s, params[:action])
+    @menus = Food::Menu.created_within(time_point, params[:action])
   end
 
   def set_orders
-    @orders = Order.created_within(params[:start_date] || Time.current.to_s, params[:action])
+    @orders = Order.created_within(time_point, params[:action]).includes(:food_items)
+  end
+
+  def time_point
+    return Time.zone.parse(params[:start_date]) if params[:start_date].present?
+    Time.current
   end
 end

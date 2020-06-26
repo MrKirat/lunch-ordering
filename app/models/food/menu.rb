@@ -1,5 +1,5 @@
 class Food::Menu < ApplicationRecord
-  include DataSearchable
+  include DateSearchable
 
   MAX_MENU_COUNT_PER_DAY = 1
 

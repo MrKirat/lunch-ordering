@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: [:show]
+  before_action :set_menu, only: [:new, :create]
 
   # GET /orders
   def index
@@ -13,35 +14,28 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    return redirect_to orders_path, notice: 'Today\'s menu is not found.' unless (@menu = Food::Menu.current)
     @order = Order.new
   end
 
   # POST /orders
   def create
-    @order = current_user.orders.new(order_params.merge(customer: current_user))
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-      else
-        p @order.errors.messages
-        p @order.order_items.first.errors.messages
-        format.html { render :new }
-      end
-    end
+    result = Orders::CreateOrder.call(params: order_params, user: current_user)
+    redirect_to result.order, notice: 'Order was successfully created.' and return if result.success?
+    redirect_to new_order_path, flash: {error: result.errors.full_messages.join(' ')}
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = current_user.orders.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  def set_menu
+    redirect_to orders_path, alert: 'Today\'s menu is not found.' unless (@menu = Food::Menu.current)
+  end
+
   def order_params
-    params[:order][:food_item_ids] = params[:order][:food_item_ids].values
-    params.require(:order).permit(food_item_ids: [])
+    params[:order][:food_item_ids] = params[:order][:food_item_ids].values if params.dig(:order, :food_item_ids)
+    params.fetch(:order, {}).permit(food_item_ids: [])
   end
 end
