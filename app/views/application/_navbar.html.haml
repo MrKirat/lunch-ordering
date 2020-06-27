@@ -1,8 +1,6 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   .container
-    .navbar-brand
-      = link_to root_path, :class => "btn btn-outline-light" do
-        = icon("fas", "utensils")
+    = render 'common/navbar/brand', path: root_path, content: icon("fas", "utensils")
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse

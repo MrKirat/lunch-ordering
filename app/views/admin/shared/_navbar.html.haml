@@ -1,27 +1,14 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   .container
-    .navbar-brand
-      = link_to admin_dashboard_path, :class => "btn btn-outline-light" do
-        [Admin]
-        = icon("fas", "utensils")
+    = render 'common/navbar/brand', path: admin_dashboard_path, content: admin_brand_content
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
         - if admin_signed_in?
-          %li.nav-item
-            %a.nav-link{:href => "/admin/dashboard"} Dashboard
-          %li.nav-item
-            %a.nav-link{:href => "/admin/calendars/month"} Calendar
-          %li.nav-item
-            %a.nav-link{:href => "/admin/users"} Users
-          %li.nav-item
-            %a.nav-link{:href => "/admin/food/menus"} Menus
-          %li.nav-item
-            %a.nav-link{:href => "/admin/orders"} Orders
+          = render 'common/navbar/links', links: admin_links
       .inline.my-2.my-lg-0
         - if admin_signed_in?
-          -# = link_to 'My Profile', edit_admin_registration_path, :class => "btn btn-outline-light mr-sm-2"
           = link_to "Sign out", destroy_admin_session_path, :method => :delete, :class => "btn btn-outline-light"
         - else
           = link_to 'Sign in', new_admin_session_path, :class => "btn btn-outline-primary mr-sm-2"
