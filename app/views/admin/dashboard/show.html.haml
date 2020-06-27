@@ -1,7 +1,7 @@
 %h1.mt-3 Admin dashboard
 
 %h3.mt-4 Calendar
-.dashboard-calendar
+.calendar.calendar--no-pagination
   = week_calendar do |date|
     = render 'admin/calendars/cell', date: date,
       menus_count: count_items_per_cell(@menus_per_week, date),

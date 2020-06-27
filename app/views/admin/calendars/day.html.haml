@@ -1,8 +1,9 @@
 %h1 Daily stats
 
-= link_to 'Prev', admin_calendars_day_path(:start_date => (Time.zone.parse(@date) - 1.day).strftime('%Y-%m-%d'))
-%span= @date
-= link_to 'Next', admin_calendars_day_path(:start_date => (Time.zone.parse(@date) + 1.day).strftime('%Y-%m-%d'))
+.calendar-heading
+  = link_to 'Previous', admin_calendars_day_path(:start_date => (Time.zone.parse(@date) - 1.day).strftime('%Y-%m-%d'))
+  %span.calendar-title= @date
+  = link_to 'Next', admin_calendars_day_path(:start_date => (Time.zone.parse(@date) + 1.day).strftime('%Y-%m-%d'))
 
 %h3 Menus
 
