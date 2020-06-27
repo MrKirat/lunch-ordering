@@ -1,0 +1,14 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container
+    = render 'common/navbar/brand', path: admin_dashboard_path, content: admin_brand_content
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        - if admin_signed_in?
+          = render 'common/navbar/links', links: admin_links
+      .inline.my-2.my-lg-0
+        - if admin_signed_in?
+          = link_to "Sign out", destroy_admin_session_path, :method => :delete, :class => "btn btn-outline-light"
+        - else
+          = link_to 'Sign in', new_admin_session_path, :class => "btn btn-outline-primary mr-sm-2"

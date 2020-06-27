@@ -1,8 +1,8 @@
 !!!
 %html
-  = render 'head'
+  = render 'application/head'
   %body
-    = render'admins/shared/navbar'
+    = render'admin/shared/navbar'
     .container
-      = render 'flash'
+      = render 'application/flash'
       = yield

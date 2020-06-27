@@ -1,9 +1,0 @@
-%h2.text-center Change your password
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "devise-form ml-auto mr-auto", method: :put}) do |f|
-  = f.error_notification
-  = f.hidden_field :reset_password_token
-  = f.input :password, autofocus: true, autocomplete: "new-password"
-  = f.input :password_confirmation, autocomplete: "new-password"
-  = f.button :submit, "Change my password", class: "btn-primary text-center"
-.text-center
-  = render "users/shared/links"

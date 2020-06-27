@@ -4,5 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :name, presence: true, length: { minimum: 1 }
+
   has_many :orders
 end

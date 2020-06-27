@@ -1,0 +1,5 @@
+%h1 Listing users
+
+= link_to 'New User', new_admin_user_path
+
+= render 'admin/users/collection', users: @users

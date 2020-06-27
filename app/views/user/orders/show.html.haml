@@ -1,0 +1,7 @@
+= render 'common/food/items/collection', items: @order.food_items
+
+%p
+  %b Total price:
+  %span= @order.total_cost.format
+
+= link_to 'Back', orders_path

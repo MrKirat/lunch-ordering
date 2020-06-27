@@ -1,0 +1,41 @@
+.calendar {
+  &__cell {
+    display: block;
+    height: 100%;
+    color: black;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  //override
+  .day:hover {
+    background-color: #00BCD4;
+  }
+}
+
+//override
+.calendar-heading {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .calendar-title {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0.375rem 0.75rem;
+  }
+
+  a {
+    @extend .btn;
+    @extend .btn-outline-primary;
+  }
+}
+
+.calendar--no-pagination {
+  //override
+  .calendar-heading {
+    display: none !important;
+  }
+}

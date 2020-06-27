@@ -1,0 +1,9 @@
+%p
+  %b Date:
+  = menu_date(@menu)
+
+= render 'common/food/categories/collection', categories: @menu.categories
+
+= link_to 'Edit', edit_admin_food_menu_path(@menu)
+\|
+= link_to 'Back', admin_food_menus_path

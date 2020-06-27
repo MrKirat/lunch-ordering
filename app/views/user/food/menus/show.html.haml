@@ -1,0 +1,7 @@
+%p
+  %b Date:
+  = menu_date(@menu)
+
+= render 'common/food/categories/collection', categories: @menu.categories
+
+= link_to 'Back', dashboard_path

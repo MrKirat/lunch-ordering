@@ -1,13 +1,14 @@
 class Food::Menu < ApplicationRecord
-  include DataSearchable
+  include DateSearchable
 
   MAX_MENU_COUNT_PER_DAY = 1
 
-  has_many :categories, foreign_key: :food_menu_id
+  has_many :categories, foreign_key: :food_menu_id, dependent: :nullify
   has_many :items, through: :categories
 
-  accepts_nested_attributes_for :categories, reject_if: proc { |attributes| attributes['name'].blank? }
+  accepts_nested_attributes_for :categories, reject_if: :all_blank
 
+  validates_length_of :categories, minimum: 1, message: 'should contain at least 1 record'
   validate :must_be_only_one_per_day, on: :create
   validate :must_be_current, on: :update
 

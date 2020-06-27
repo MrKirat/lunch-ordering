@@ -1,9 +1,0 @@
-%p
-  %b Date:
-  = menu_date(@menu)
-
-= render 'food/categories/collection', categories: @menu.categories
-
-= link_to 'Edit', edit_admins_food_menu_path(@menu)
-\|
-= link_to 'Back', admins_food_menus_path

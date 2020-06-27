@@ -1,0 +1,17 @@
+%h1 Daily stats
+
+.calendar-heading
+  = link_to 'Previous', admin_calendars_day_path(:start_date => (Time.zone.parse(@date) - 1.day).strftime('%Y-%m-%d'))
+  %span.calendar-title= @date
+  = link_to 'Next', admin_calendars_day_path(:start_date => (Time.zone.parse(@date) + 1.day).strftime('%Y-%m-%d'))
+
+%h3 Menus
+
+= render 'admin/food/menus/collection', menus: @menus
+
+%h3 Orders
+
+%b Total cost per day:
+= @orders.reduce(Money.new(0)) { |sum, order| sum + order.total_cost }
+
+= render 'admin/orders/collection', orders: @orders
