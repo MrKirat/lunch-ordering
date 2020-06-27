@@ -1,6 +1,4 @@
-class Admins::OrdersController < ApplicationController
-  before_action :authenticate_admin!
-  layout 'admin'
+class Admins::OrdersController < Admins::BaseController
 
   # GET /admins/orders
   def index

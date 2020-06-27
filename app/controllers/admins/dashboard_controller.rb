@@ -1,11 +1,8 @@
-class AdminsController < ApplicationController
-  before_action :authenticate_admin!
-  layout 'admin'
-
+class Admins::DashboardController < Admins::BaseController
   RECORDS_TO_SHOW = 3
   CURRENT_DATE_POINT = Time.current
 
-  def dashboard
+  def show
     @menus_per_week = Food::Menu.created_within(CURRENT_DATE_POINT, :week)
     @orders_per_week = Order.created_within(CURRENT_DATE_POINT, :week).includes(:food_items)
 

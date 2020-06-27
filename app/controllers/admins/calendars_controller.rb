@@ -1,8 +1,6 @@
-class Admins::CalendarsController < ApplicationController
-  before_action :authenticate_admin!
+class Admins::CalendarsController < Admins::BaseController
   before_action :set_menus, only: [:day ,:month]
   before_action :set_orders, only: [:day ,:month]
-  layout 'admin'
 
   # GET /admins/calendars/day
   def day

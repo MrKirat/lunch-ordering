@@ -1,9 +1,7 @@
-class Admins::Food::MenusController < ApplicationController
-  before_action :authenticate_admin!
+class Admins::Food::MenusController < Admins::BaseController
   before_action :set_menu, only: [:show, :edit, :update]
   before_action :check_if_menu_editable, only: [:edit, :update]
   before_action :check_if_menu_creatable, only: [:new, :create]
-  layout 'admin'
 
   # GET /admins/food/menus
   def index
