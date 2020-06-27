@@ -6,19 +6,6 @@
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
-      %ul.navbar-nav.mr-auto
-        %li.nav-item
-          %a.nav-link{:href => "/"}
-            Home
-        - if user_signed_in?
-          %li.nav-item
-            %a.nav-link{:href => "/dashboard"} Dashboard
-          %li.nav-item
-            %a.nav-link{:href => "/orders"} Orders
-      .inline.my-2.my-lg-0
-        - if user_signed_in?
-          = link_to 'My Profile', edit_user_registration_path, :class => "btn btn-outline-light mr-sm-2"
-          = link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-outline-light"
-        - else
-          = link_to 'Sign in', new_user_session_path, :class => "btn btn-outline-primary mr-sm-2"
-          = link_to 'Sign up', new_user_registration_path, :class => "btn btn-outline-success"
+      .ml-auto.inline.my-2.my-lg-0
+        = link_to 'Sign in', new_user_session_path, :class => "btn btn-outline-primary mr-sm-2"
+        = link_to 'Sign up', new_user_registration_path, :class => "btn btn-outline-success"

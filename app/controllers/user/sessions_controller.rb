@@ -2,6 +2,7 @@
 
 class User::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  layout 'user'
 
   # GET /resource/sign_in
   # def new
@@ -17,6 +18,11 @@ class User::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  #
+  # Let's redirect users to dashboard
+  def after_sign_in_path_for(resource)
+    dashboard_path
+  end
 
   # protected
 
