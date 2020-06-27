@@ -4,11 +4,11 @@ class Admins::OrdersController < ApplicationController
 
   # GET /admins/orders
   def index
-    @orders = Order.all.order(created_at: :desc).includes(:food_items)
+    @orders = Order.includes(:food_items).all.order(created_at: :desc)
   end
 
   # GET /admins/orders/1
   def show
-    @order = Order.find(params[:id]).includes(:food_items)
+    @order = Order.includes(:food_items).find(params[:id])
   end
 end
