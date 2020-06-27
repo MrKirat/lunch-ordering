@@ -1,0 +1,13 @@
+%H1 Order
+
+= render 'common/food/items/collection', items: @order.food_items
+
+%p
+  %b Total price:
+  %span= @order.total_cost.format
+
+%p
+  %b Customer
+  %span= link_to @order.customer.email, admin_user_path(@order.customer)
+
+= link_to 'Back', admin_orders_path

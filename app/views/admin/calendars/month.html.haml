@@ -1,0 +1,8 @@
+%h1 Monthly calendars
+
+.calendars
+  = month_calendar do |date|
+    = render 'admin/calendars/cell',
+      date: date,
+      menus_count: count_items_per_cell(@menus, date),
+      orders_count: count_items_per_cell(@orders, date)

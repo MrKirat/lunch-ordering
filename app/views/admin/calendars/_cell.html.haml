@@ -1,0 +1,12 @@
+= link_to admin_calendars_day_path(:start_date => date.to_s), class: 'calendars__cell' do
+  .badge.badge-pill.badge-light= date.day
+
+  - if menus_count > 0
+    %br
+    %b Menus:
+    = menus_count
+
+  - if orders_count > 0
+    %br
+    %b Orders:
+    = orders_count

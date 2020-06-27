@@ -1,0 +1,12 @@
+%table.table.mt-3
+  %thead
+    %tr
+      %th Date
+      %th{colspan: 2}
+
+  %tbody
+    - menus.each do |menu|
+      %tr
+        %td= menu_date(menu)
+        %td= link_to 'Show', admin_food_menu_path(menu)
+        %td= link_to 'Edit', edit_admin_food_menu_path(menu)

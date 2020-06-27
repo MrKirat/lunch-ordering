@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # Admins
-  devise_for :admins, path: 'admins', controllers: {
-    sessions: 'admins/sessions'
+  devise_for :admins, path: 'admin', controllers: {
+    sessions: 'admin/sessions'
   }
-  namespace :admins do
+  namespace :admin do
     get '/calendars/month', to: 'calendars#month'
     get '/calendars/day', to: 'calendars#day'
     get '/dashboard', to: 'dashboard#show'
@@ -16,12 +16,16 @@ Rails.application.routes.draw do
 
   # Users
   devise_for :users, path: '/', controllers: {
-    registrations: 'registrations',
-    sessions: 'sessions'
+    registrations: 'user/registrations',
+    sessions: 'user/sessions'
   }
-  get 'menus/:id', to: 'food/menus#show', as: :food_menu
-  resources :orders, except: [:destroy, :edit, :update]
-  get :dashboard, to: 'users#dashboard'
+  scope module: :user do
+    get '/menus/:id', to: 'food/menus#show', as: :food_menu
+    get '/dashboard', to: 'dashboard#show'
+    resources :orders, except: [:destroy, :edit, :update]
+  end
+
+  # Common
   root 'home#index'
 
   # API
