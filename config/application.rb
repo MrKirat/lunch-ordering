@@ -25,5 +25,8 @@ module LunchOrdering
                  methods: [:get, :post, :options, :delete, :put, :patch]
       end
     end
+
+    # Let's route exceptions to our app router
+    config.exceptions_app = self.routes
   end
 end
