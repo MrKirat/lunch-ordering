@@ -87,6 +87,8 @@ group :development do
 end
 
 group :test do
+  # Ruby testing gem that provides one-liners that test Rails functionality
+  gem 'shoulda-matchers', '~> 4.0'
   # To scrub database before each test
   gem 'database_cleaner'
   # Automatic installation and updates for all supported webdrivers

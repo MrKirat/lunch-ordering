@@ -4,7 +4,7 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :timeoutable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true, format: { with: Devise::email_regexp }
 
   include DeviseTokenAuth::Concerns::User
 end

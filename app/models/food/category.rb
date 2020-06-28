@@ -4,6 +4,5 @@ class Food::Category < ApplicationRecord
 
   accepts_nested_attributes_for :items, reject_if: :all_blank
 
-  validates_presence_of :name
-  validates_length_of :items, minimum: 1, message: 'should contain at least 1 record'
+  validates_presence_of :name, :items
 end

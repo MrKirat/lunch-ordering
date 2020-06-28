@@ -24,7 +24,7 @@ feature 'Order creating' do
         current_order_path = page.current_path
         click_button 'Submit'
         expect(page).to have_current_path(current_order_path)
-        expect(page).to have_content("Food items should contain at least 1 record")
+        expect(page).to have_content("Food items can't be blank")
       end
 
       scenario 'when was chosen one item should be successful' do

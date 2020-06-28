@@ -9,6 +9,7 @@ class Food::Item < ApplicationRecord
   has_many :orders, through: :order_items
 
   has_one_attached :image
+
   validates_presence_of :name
 
   monetize :price_cents, allow_nil: false, numericality: {
