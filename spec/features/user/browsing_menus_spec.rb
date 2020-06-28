@@ -44,8 +44,6 @@ feature 'Browsing menus' do
             expect(page).to have_content(item.name)
           end
         end
-
-        visit dashboard_path
       end
     end
   end
