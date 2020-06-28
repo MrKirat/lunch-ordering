@@ -8,7 +8,8 @@ class Food::Menu < ApplicationRecord
 
   accepts_nested_attributes_for :categories, reject_if: :all_blank
 
-  validates_length_of :categories, minimum: 1, message: 'should contain at least 1 record'
+  validates_presence_of :categories
+
   validate :must_be_only_one_per_day, on: :create
   validate :must_be_current, on: :update
 
