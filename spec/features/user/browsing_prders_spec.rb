@@ -31,7 +31,7 @@ feature 'Browsing orders' do
           expect(page).to have_content(item.name)
           expect(page).to have_content(item.price)
         end
-        expect(page).to have_content(order.total_cost)
+        expect(page).to have_content(order.total_cost.format)
       end
     end
   end

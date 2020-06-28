@@ -36,7 +36,7 @@ feature 'Order creating' do
 
         created_order_id = page.current_path.split('/').last.to_i
 
-        expect(page).to have_content(Order.find(created_order_id).total_cost)
+        expect(page).to have_content(Order.find(created_order_id).total_cost.format)
         expect(page).to have_content(chosen_item_name)
         expect(page).to have_content("Order was successfully created.")
       end
