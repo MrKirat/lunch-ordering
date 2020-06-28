@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
   namespace :admin do
-    get '/', to: redirect('/dashboard')
+    get '/', to: redirect('/admin/dashboard')
     get '/calendars/month', to: 'calendars#month'
     get '/calendars/day', to: 'calendars#day'
     get '/dashboard', to: 'dashboard#show'
