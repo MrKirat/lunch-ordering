@@ -14,6 +14,10 @@ module CapybaraHelper
     fill_in 'Password confirmation', with: password
     click_button 'Sign up'
   end
+
+  def sign_up_user(additional_attr = {})
+    sign_up path: new_user_registration_path, **FactoryBot.attributes_for(:user).merge(additional_attr)
+  end
 end
 
 RSpec.configure do |config|

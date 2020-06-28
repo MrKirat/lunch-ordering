@@ -52,9 +52,5 @@ feature 'Signing up' do
         end
       end
     end
-
-    def sign_up_user(additional_attr = {})
-      sign_up path: new_user_registration_path, **FactoryBot.attributes_for(:user).merge(additional_attr)
-    end
   end
 end
