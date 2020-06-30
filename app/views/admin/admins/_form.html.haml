@@ -1,0 +1,16 @@
+-# frozen_string_literal: true
+= simple_form_for(@admin, url: url_for([:admin, @admin]), html: {class: "devise-form ml-auto mr-auto"}) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+    = f.input :email, input_html: { autocomplete: 'email', autofocus: true }
+    - if current_admin.has_role? :root
+      - for role in Admin.roles
+        = label_tag do
+          = check_box_tag "admin[roles][]", role, @admin.has_role?(role)
+          = role
+        <br/>
+    = f.input :password, minlength: @minimum_password_length, input_html: { autocomplete: 'new-password' }
+    = f.input :password_confirmation, autocomplete: "new-password"
+  .form-actions
+    = f.button :submit, "Submit", class: "btn-primary text-center"

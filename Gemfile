@@ -39,6 +39,8 @@ gem 'nested_form_fields'
 gem 'devise_token_auth'
 # To configure CORS
 gem 'rack-cors'
+# To add roles for admin
+gem "rolify"
 # To serialize data
 gem 'blueprinter'
 # Fast JSON parser

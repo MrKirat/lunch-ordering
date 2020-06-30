@@ -4,11 +4,12 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
   namespace :admin do
-    get '/', to: redirect('/dashboard')
+    get '/', to: redirect('/admin/dashboard')
     get '/calendars/month', to: 'calendars#month'
     get '/calendars/day', to: 'calendars#day'
     get '/dashboard', to: 'dashboard#show'
     resources :users
+    resources :admins
     namespace :food do
       resources :menus, except: :destroy
     end
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
 
   # Custom error pages
   get '/404', to: "errors#not_found"
+  get '/405', to: "errors#method_not_allowed"
   get '/422', to: "errors#unacceptable"
   get '/500', to: "errors#internal_error"
 end

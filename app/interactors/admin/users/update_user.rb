@@ -1,4 +1,4 @@
-class Admins::Users::UpdateUser
+class Admin::Users::UpdateUser
   include Interactor
 
   def call

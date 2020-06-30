@@ -7,6 +7,9 @@
       %ul.navbar-nav.mr-auto
         - if admin_signed_in?
           = render 'common/navbar/links', links: admin_links
+          - if current_admin.has_role? :root
+            %li.nav-item
+              = link_to 'Admins', admin_admins_path, class: 'nav-link'
       .inline.my-2.my-lg-0
         - if admin_signed_in?
           = link_to "Sign out", destroy_admin_session_path, :method => :delete, :class => "btn btn-outline-light"
