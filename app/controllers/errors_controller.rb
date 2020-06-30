@@ -9,6 +9,14 @@ class ErrorsController < ApplicationController
     end
   end
 
+  # 405 error
+  def method_not_allowed
+    respond_to do |format|
+      format.html { render status: 405 }
+      format.json { render plain: {error: 'method_not_allowed'}.to_json, status: 405, content_type: 'application/json' }
+    end
+  end
+
   # 422 error
   def unacceptable
     respond_to do |format|

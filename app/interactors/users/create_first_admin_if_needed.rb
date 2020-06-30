@@ -4,13 +4,18 @@ class Users::CreateFirstAdminIfNeeded
   def call
     return unless first_saved_user?(context.user)
 
-    context.admin = Admin.create(
+    context.admin = Admin.new(
       password: context.params[:password],
       password_confirmation: context.params[:password_confirmation],
       email: context.params[:email]
     )
 
-    context.fail!(error: context.admin.errors) if context.admin.errors.any?
+    # Let's assign all admin roles to first admin
+    Admin.roles.each do |role|
+      context.admin.add_role role
+    end
+
+    context.fail!(error: context.admin.errors) unless context.admin.save
     context.admin_success_message = I18n.t('interactors.first_admin_success') unless context.admin.errors.any?
   end
 

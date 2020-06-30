@@ -29,7 +29,7 @@ class Admin::UsersController < Admin::BaseController
 
   # PATCH/PUT /admin/users/1
   def update
-    result = Admins::Users::UpdateUser.call(user: @user, params: user_params)
+    result = Admin::Users::UpdateUser.call(user: @user, params: user_params)
 
     redirect_to admin_user_path(result.user), notice: 'User was successfully updated.' and return if result.errors.blank?
     redirect_to edit_admin_user_path(result.user), flash: {alert: result.errors.full_messages.join(' ')}
