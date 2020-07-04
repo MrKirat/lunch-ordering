@@ -1,6 +1,6 @@
 class Admin::AdminsController < Admin::BaseController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-  before_action { check_role current_admin, :root }
+  check_role :root, model: :current_admin
   before_action :redirect_if_current_admin, only: [:edit, :update, :destroy]
 
   # GET /admin/admins
