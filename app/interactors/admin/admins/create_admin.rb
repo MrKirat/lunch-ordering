@@ -9,7 +9,7 @@ class Admin::Admins::CreateAdmin
         email: context.params[:email]
       )
       context.admin.add_roles context.params[:roles]
-      context.fail!(error: context.admin.errors) unless context.admin.save
+      context.fail!(errors: context.admin.errors) unless context.admin.save
     end
   end
 end

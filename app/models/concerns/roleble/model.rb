@@ -1,6 +1,6 @@
 module Roleble::Model
   def add_roles(roles)
-    roles.each { |role| self.add_role role.to_sym }
+    roles.each { |role| self.add_role role.to_sym } if roles.present?
   end
 
   def remove_roles(roles = nil)

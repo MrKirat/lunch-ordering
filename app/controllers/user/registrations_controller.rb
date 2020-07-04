@@ -14,7 +14,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   def create
     super do
       result = Users::CreateFirstAdminIfNeeded.call(user: resource, params: params[:user])
-      flash.now[:error] = result.errors.full_messages.join(' ') unless result.success?
+      flash.now[:error] = helpers.format_errors_for(result) unless result.success?
       flash[:success] = result.admin_success_message if result.admin_success_message
     end
   end
@@ -56,9 +56,9 @@ class User::RegistrationsController < Devise::RegistrationsController
   end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    dashboard_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
