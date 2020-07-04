@@ -1,14 +1,19 @@
 require 'rails_helper'
 
 feature 'Signing in' do
-  {:user => :new_user_session_path, :admin => :new_admin_session_path}.each do |visitor_type, sign_in_path|
-    context visitor_type do
-      given(:visitor) { FactoryBot.create(visitor_type) }
+  VISITORS_OPTIONS = [
+    {type: :user, sign_in_path: :new_user_session_path, factory_bot_params: [:user]},
+    {type: :admin, sign_in_path: :new_admin_session_path, factory_bot_params: [:admin, :with_ui_role]}
+  ]
+
+  VISITORS_OPTIONS.each do |visitor_options|
+    context visitor_options[:type] do
+      given(:visitor) { FactoryBot.create(*visitor_options[:factory_bot_params]) }
       given(:invalid_password) { "#{visitor.password}_wrong" }
       given(:invalid_email) { "#{visitor.email}_wrong" }
 
       scenario 'with valid email and password' do
-        sign_in path: send(sign_in_path),
+        sign_in path: send(visitor_options[:sign_in_path]),
                 email: visitor.email,
                 password: visitor.password
 
@@ -16,7 +21,7 @@ feature 'Signing in' do
       end
 
       scenario 'with valid email and invalid password' do
-        sign_in path: send(sign_in_path),
+        sign_in path: send(visitor_options[:sign_in_path]),
                 email: visitor.email,
                 password: invalid_password
 
@@ -25,7 +30,7 @@ feature 'Signing in' do
       end
 
       scenario 'with valid password and invalid email' do
-        sign_in path: send(sign_in_path),
+        sign_in path: send(visitor_options[:sign_in_path]),
                 email: invalid_email,
                 password: visitor.password
 

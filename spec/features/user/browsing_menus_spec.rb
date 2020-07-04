@@ -3,9 +3,10 @@ require 'rails_helper'
 feature 'Browsing menus' do
   context 'when user signed in' do
     given(:user) { FactoryBot.create(:user) }
+    given(:current_day) { Time.current.end_of_week }
     given!(:menus_per_week) do
       (0...7).reverse_each.map do |number|
-        travel_to number.days.ago do
+        travel_to(current_day - number.days) do
           FactoryBot.create(:food_menu, categories_count: 3, items_per_category: 3)
         end
       end
