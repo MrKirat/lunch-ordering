@@ -10,9 +10,15 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super do |admin|
+      if admin.persisted? && !admin.has_role?(:ui)
+        sign_out admin
+        flash.delete(:notice)
+        redirect_to new_admin_session_path, alert: 'Only admins with a "ui" role have access to the dashboard.' and return
+      end
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
