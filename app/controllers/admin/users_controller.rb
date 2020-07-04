@@ -24,7 +24,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(user_params)
 
     redirect_to admin_user_path(@user), notice: 'User was successfully created.' and return if @user.save
-    redirect_to new_admin_user_path, flash: {alert: @user.errors.full_messages.join(' ')}
+    redirect_to new_admin_user_path, flash: {alert: helpers.format_errors_for(@user)}
   end
 
   # PATCH/PUT /admin/users/1
@@ -32,7 +32,7 @@ class Admin::UsersController < Admin::BaseController
     result = Admin::Users::UpdateUser.call(user: @user, params: user_params)
 
     redirect_to admin_user_path(result.user), notice: 'User was successfully updated.' and return if result.errors.blank?
-    redirect_to edit_admin_user_path(result.user), flash: {alert: result.errors.full_messages.join(' ')}
+    redirect_to edit_admin_user_path(result.user), flash: {alert: helpers.format_errors_for(result)}
   end
 
   # DELETE /admin/users/1

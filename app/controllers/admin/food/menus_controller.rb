@@ -26,13 +26,13 @@ class Admin::Food::MenusController < Admin::BaseController
     @menu = Food::Menu.new(menu_params)
 
     redirect_to admin_food_menu_path(@menu), notice: 'Menu was successfully created.' and return if @menu.save
-    redirect_to new_admin_food_menu_path, flash: {alert: @menu.errors.full_messages.join(' ')}
+    redirect_to new_admin_food_menu_path, flash: {alert: helpers.format_errors_for(@menu)}
   end
 
   # PATCH/PUT /admin/food/menus/1
   def update
     redirect_to admin_food_menu_path(@menu), notice: 'Menu was successfully updated.' and return if @menu.update(menu_params)
-    redirect_to edit_admin_food_menu_path(@menu), flash: {alert: @menu.errors.full_messages.join(' ')}
+    redirect_to edit_admin_food_menu_path(@menu), flash: {alert: helpers.format_errors_for(@menu)}
   end
 
   private

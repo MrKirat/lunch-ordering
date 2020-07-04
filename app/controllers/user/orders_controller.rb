@@ -20,7 +20,7 @@ class User::OrdersController < User::BaseController
   def create
     result = Orders::CreateOrder.call(params: order_params, user: current_user)
     redirect_to result.order, notice: 'Order was successfully created.' and return if result.success?
-    redirect_to new_order_path, flash: {error: result.errors.full_messages.join(' ')}
+    redirect_to new_order_path, flash: {error: helpers.format_errors_for(result)}
   end
 
   private
